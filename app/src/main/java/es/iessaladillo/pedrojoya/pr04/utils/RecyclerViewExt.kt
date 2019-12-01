@@ -1,5 +1,6 @@
 package es.iessaladillo.pedrojoya.pr04.utils
 
+import android.view.View
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 

@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.TasksActivity">
 
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lstTasks"
         android:layout_width="0dp"
@@ -73,6 +75,8 @@
             android:tint="@color/colorWhite" />
 
     </RelativeLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
