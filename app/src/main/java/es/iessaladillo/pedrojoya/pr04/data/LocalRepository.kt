@@ -23,15 +23,15 @@ class LocalRepository : Repository{
     private var list:MutableList<Task> = mutableListOf()
 
     override fun queryAllTasks(): List<Task> {
-        return list
+        return list.sortedByDescending { it.id }
     }
 
     override fun queryCompletedTasks(): List<Task> {
-        return list.filter { x-> x.completed }
+        return list.filter { x-> x.completed }.sortedByDescending { it.id }
     }
 
     override fun queryPendingTasks(): List<Task> {
-        return list.filter { x-> !x.completed }
+        return list.filter { x-> !x.completed }.sortedByDescending { it.id }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

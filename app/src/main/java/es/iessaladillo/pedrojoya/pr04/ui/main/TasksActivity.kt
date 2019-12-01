@@ -93,8 +93,8 @@ class TasksActivity : AppCompatActivity() {
     private fun observe() {
         viewModel.tasks.observe(this, { showTasks(it) })
         viewModel.activityTitle.observe(this,{ title=it })
-        viewModel.currentFilterMenuItemId.observe(this){checkMenuItem(it)}
         viewModel.lblEmptyViewText.observe(this){ lblEmptyView.text = it }
+        viewModel.currentFilterMenuItemId.observe(this){ checkMenuItem(it)}
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -118,11 +118,10 @@ class TasksActivity : AppCompatActivity() {
     }
 
     private fun checkMenuItem(@MenuRes menuItemId: Int) {
-
-        val item = mnuFilter?.subMenu?.findItem(menuItemId)
         lstTasks.post {
-            item.let { menuItem ->
-                menuItem?.isChecked = true
+            val item = mnuFilter?.subMenu?.findItem(menuItemId)
+            item?.let { menuItem ->
+                menuItem.isChecked = true
             }
         }
     }
