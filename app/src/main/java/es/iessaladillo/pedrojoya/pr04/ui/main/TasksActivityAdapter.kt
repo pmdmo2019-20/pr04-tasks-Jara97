@@ -80,12 +80,12 @@ class TasksActivityAdapter() : RecyclerView.Adapter<TasksActivityAdapter.ViewHol
             lblConcept.strikeThrough(task.completed)
             if(task.completed){
                 task.completedAt= "Completed at "+ Date().toLocaleString()
-                viewBar.setBackgroundColor(Color.BLUE)
+                viewBar.background=viewBar.resources.getDrawable(R.color.colorCompletedTask)
                 lblCompleted.text=task.completedAt
             }
             else{
                 lblCompleted.text=task.createdAt
-                viewBar.setBackgroundColor(Color.DKGRAY)
+                viewBar.background=viewBar.resources.getDrawable(R.color.colorPendingTask)
             }
 
         }
