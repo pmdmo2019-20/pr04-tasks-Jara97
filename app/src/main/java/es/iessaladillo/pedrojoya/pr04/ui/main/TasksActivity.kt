@@ -95,6 +95,7 @@ class TasksActivity : AppCompatActivity() {
         viewModel.activityTitle.observe(this,{ title=it })
         viewModel.lblEmptyViewText.observe(this){ lblEmptyView.text = it }
         viewModel.currentFilterMenuItemId.observe(this){ checkMenuItem(it)}
+        viewModel.onShowMessage.observe(this){  Snackbar.make(txtConcept, getString(R.string.tasks_no_tasks_to_share), Snackbar.LENGTH_LONG).show()}
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -105,7 +106,7 @@ class TasksActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.mnuShare -> {viewModel.shareTasks() }
+            R.id.mnuShare -> { viewModel.shareTasks() }
             R.id.mnuDelete -> if(viewModel.tasks.value?.size!=0)viewModel.deleteTasks() else Snackbar.make(txtConcept, getString(R.string.tasks_no_tasks_to_delete), Snackbar.LENGTH_LONG).show()
             R.id.mnuComplete -> viewModel.markTasksAsCompleted()
             R.id.mnuPending -> viewModel.markTasksAsPending()
@@ -114,6 +115,7 @@ class TasksActivity : AppCompatActivity() {
             R.id.mnuFilterCompleted -> viewModel.filterCompleted()
             else -> return super.onOptionsItemSelected(item)
         }
+        checkMenuItem(item.itemId)
         return true
     }
 

@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.tasks_activity_item.*
 import java.util.*
 
 
-class TasksActivityAdapter() : RecyclerView.Adapter<TasksActivityAdapter.ViewHolder>() {
+class TasksActivityAdapter : RecyclerView.Adapter<TasksActivityAdapter.ViewHolder>() {
 
     private var data: List<Task> = emptyList()
     private var onItemClick:((Int)->Unit)?=null
